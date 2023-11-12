@@ -15,7 +15,6 @@ class Trainer:
             # Train on the training data
             for batch_idx, (samples, targets) in enumerate(self.dataset):
                 # Forward pass
-                samples = samples.unsqueeze(0)
                 predictions = self.model(samples.to(self.device))
                 #predictions = self.model(samples)  # without GPU
 

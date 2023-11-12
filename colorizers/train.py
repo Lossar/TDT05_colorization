@@ -18,7 +18,7 @@ def array_to_image(array):
     return x.astype(float)
 
 # Number of epochs in training
-epochs = 1000
+epochs = 1
 
 # Learning rate
 learning_rate = 0.01
@@ -28,12 +28,12 @@ samples = np.load("../datasets/cifar-100-python/train_grayscale")
 targets = np.load("../datasets/cifar-100-python/train")
 
 # Reshape data to arrays with dimensions [Count, Channels, Width, Height]
-input_samples = np.empty((len(samples), 3, 32, 32))
+input_samples = np.empty((len(samples), 1, 3, 32, 32))
 for i in range(len(samples)):
     image = array_to_image(samples[i])
     input_samples[i] = image
 
-input_targets = np.empty((len(samples), 3, 32, 32))
+input_targets = np.empty((len(samples), 1, 3, 32, 32))
 for i in range(len(targets)):
     image = array_to_image(targets[i])
     input_targets[i] = image
