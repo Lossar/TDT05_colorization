@@ -3,11 +3,19 @@ import numpy as np
 import torch
 from torch import optim, nn
 from torch.utils.data import DataLoader
+import cv2
 
-from colorizers.dataset import Dataset
+from dataset import Dataset
+from colorizer_model import ColorizerModel
 
 import trainer
 
+def array_to_image(array):
+    r,g,b = array[0:1024].reshape((32,32)), array[1024:2048].reshape((32,32)), array[2048:3072].reshape((32,32))
+    result = cv2.merge([r,g,b])
+    result_array = np.asarray(result)
+    x = np.moveaxis(result_array, -1, 0)
+    return x.astype(float)
 
 # Number of epochs in training
 epochs = 1000
@@ -19,18 +27,27 @@ learning_rate = 0.01
 samples = np.load("../datasets/cifar-100-python/train_grayscale")
 targets = np.load("../datasets/cifar-100-python/train")
 
-# Convert data to tensors
-samples = torch.from_numpy(samples[0:50])
-samples = samples.to(torch.int)
-targets = torch.from_numpy(targets[0:50])
-targets = targets.to(torch.int)
+# Reshape data to arrays with dimensions [Count, Channels, Width, Height]
+input_samples = np.empty((len(samples), 3, 32, 32))
+for i in range(len(samples)):
+    image = array_to_image(samples[i])
+    input_samples[i] = image
+
+input_targets = np.empty((len(samples), 3, 32, 32))
+for i in range(len(targets)):
+    image = array_to_image(targets[i])
+    input_targets[i] = image
+
+# Create tensors from data arrays
+input_samples = torch.from_numpy(input_samples).float()
+input_targets = torch.from_numpy(input_targets).float()
 
 # Put samples and targets into a dataset
-dataset = Dataset(samples, targets)
-train_dataloader = DataLoader(dataset, batch_size=1000, shuffle=True)
+dataset = Dataset(input_samples, input_targets)
+train_dataloader = DataLoader(dataset, batch_size=5, shuffle=True)
 
 # Create a model from network
-model = Network().to('cuda:0')  #TODO: define/create a neural network
+model = ColorizerModel() #TODO: define/create a neural network
 
 # Create a trainer
 trainer = trainer.Trainer(
