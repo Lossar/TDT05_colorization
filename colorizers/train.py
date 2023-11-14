@@ -19,14 +19,14 @@ import trainer
 epochs = 1000
 
 # Learning rate
-learning_rate = 1.0
+learning_rate = 0.25
 
 # Load samples and targets (I redefined the cifar-100 dataset - removed everything but the images themselves)
 samples = np.load("../datasets/cifar-100-python/train_hsv")
 targets = np.load("../datasets/cifar-100-python/train_hsv")
 
-samples = samples[0:1, 2:3, 0:32, 0:32]
-targets = targets[0:1, 0:2, 0:32, 0:32]
+samples = samples[0:100, 2:3, 0:32, 0:32]
+targets = targets[0:100, 0:2, 0:32, 0:32]
 
 # Create tensors from data arrays
 input_samples = torch.from_numpy(samples).float()
