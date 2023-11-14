@@ -11,13 +11,13 @@ class ColorizerModel(BaseColor):
         super(ColorizerModel, self).__init__()
 
         # Define the layers of the CNN
-        self.conv1 = nn.Conv2d(1, 64, kernel_size=3, padding=1)
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
         self.relu = nn.ReLU()
-        self.conv2 = nn.Conv2d(64, 256, kernel_size=3, padding=1)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
         self.relu = nn.ReLU()
-        self.conv3 = nn.Conv2d(256, 128, kernel_size=3, padding=1)
+        self.conv3 = nn.Conv2d(64, 32, kernel_size=3, padding=1)
         self.relu = nn.ReLU()
-        self.conv4 = nn.Conv2d(128, 2, kernel_size=3, padding=1)
+        self.conv4 = nn.Conv2d(32, 2, kernel_size=3, padding=1)
 
     def forward(self, x):
         # Forward pass through the network
