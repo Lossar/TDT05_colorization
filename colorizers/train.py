@@ -25,8 +25,8 @@ learning_rate = 1.0
 samples = np.load("../datasets/cifar-100-python/train_hsv")
 targets = np.load("../datasets/cifar-100-python/train_hsv")
 
-samples = samples[0:1, 0:1, 2:3, 0:32, 0:32]
-targets = targets[0:1, 0:1, 0:2, 0:32, 0:32]
+samples = samples[0:1, 2:3, 0:32, 0:32]
+targets = targets[0:1, 0:2, 0:32, 0:32]
 
 # Create tensors from data arrays
 input_samples = torch.from_numpy(samples).float()
@@ -60,7 +60,7 @@ image_number = 0
 
 model = ColorizerModel()
 model.load_state_dict(torch.load("trained_model.pt"))
-input_data = torch.from_numpy(data[image_number][0:1, 2:3, 0:32, 0:32])
+input_data = torch.from_numpy(data[image_number][2:3, 0:32, 0:32])
 input_data = input_data.to(torch.float32)
 prediction = model(input_data).cpu()
 image_color = prediction.detach().numpy()
@@ -73,9 +73,9 @@ image = np.zeros((32, 32, 3), dtype=float)
 counter = 0
 for i in range(32):
     for j in range(32):
-        image[i][j][2] = image_value[0].flatten()[counter]
-        image[i][j][0] = image_color[0][0].flatten()[counter]
-        image[i][j][1] = image_color[0][1].flatten()[counter]
+        image[i][j][2] = image_value.flatten()[counter]
+        image[i][j][0] = image_color[0].flatten()[counter]
+        image[i][j][1] = image_color[1].flatten()[counter]
         counter += 1
 
 plt.imshow(mpl.colors.hsv_to_rgb(image.reshape((32, 32, 3)) / 255))
