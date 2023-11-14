@@ -10,7 +10,7 @@ class ColorizerModel(BaseColor):
     def __init__(self, norm_layer=nn.BatchNorm2d):
         super(ColorizerModel, self).__init__()
 
-        model1=[nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=True),]
+        model1=[nn.Conv2d(1, 64, kernel_size=3, stride=1, padding=1, bias=True),]
         model1+=[nn.ReLU(True),]
         model1+=[nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=1, bias=True),]
         model1+=[nn.ReLU(True),]
@@ -81,7 +81,7 @@ class ColorizerModel(BaseColor):
         self.model8 = nn.Sequential(*model8)
 
         self.softmax = nn.Softmax(dim=1)
-        self.model_out = nn.Conv2d(313, 3, kernel_size=1, padding=0, dilation=1, stride=1, bias=True)
+        self.model_out = nn.Conv2d(313, 2, kernel_size=1, padding=0, dilation=1, stride=1, bias=True)
         self.upsample4 = nn.Upsample(scale_factor=4, mode='bilinear')
 
     def forward(self, inputs):
