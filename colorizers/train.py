@@ -25,8 +25,8 @@ learning_rate = 0.25
 samples = np.load("../datasets/cifar-100-python/train_hsv")
 targets = np.load("../datasets/cifar-100-python/train_hsv")
 
-samples = samples[0:100, 2:3, 0:32, 0:32]
-targets = targets[0:100, 0:2, 0:32, 0:32]
+samples = samples[0:1, 2:3, 0:32, 0:32]
+targets = targets[0:1, 0:2, 0:32, 0:32]
 
 # Create tensors from data arrays
 input_samples = torch.from_numpy(samples).float()
@@ -60,14 +60,13 @@ image_number = 0
 
 model = ColorizerModel()
 model.load_state_dict(torch.load("trained_model.pt"))
-input_data = torch.from_numpy(data[image_number][2:3, 0:32, 0:32])
+image_original = data[image_number]
+input_data = torch.from_numpy(image_original[2:3, 0:32, 0:32])
 input_data = input_data.to(torch.float32)
 prediction = model(input_data).cpu()
 image_color = prediction.detach().numpy()
 
 image_value = input_samples[image_number]
-print(input_samples.shape)
-
 image = np.zeros((32, 32, 3), dtype=float)
 
 counter = 0
@@ -78,5 +77,14 @@ for i in range(32):
         image[i][j][1] = image_color[1].flatten()[counter]
         counter += 1
 
-plt.imshow(mpl.colors.hsv_to_rgb(image.reshape((32, 32, 3)) / 255))
+fig, (ax1, ax2, ax3) = plt.subplots(figsize=(15,15), ncols=3, nrows=1)
+ax1.set_title("Input image")
+ax1.imshow(np.moveaxis(np.array(image_value), 0, 2) / 255, cmap='gray')
+
+ax2.set_title("Prediction")
+ax2.imshow(mpl.colors.hsv_to_rgb(image.reshape((32, 32, 3)) / 255))
+
+ax3.set_title("Actual")
+ax3.imshow(mpl.colors.hsv_to_rgb(np.moveaxis(data[image_number],0,2)/255))
+
 plt.show()
