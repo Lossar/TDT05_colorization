@@ -12,11 +12,12 @@ import matplotlib.pyplot as plt
 
 from dataset import Dataset
 from colorizer_model import ColorizerModel
+from eccv16 import ECCVGenerator
 
 import trainer
 
 # Number of epochs in training
-epochs = 1000
+epochs = 10000
 
 # Learning rate
 learning_rate = 0.25
@@ -25,8 +26,8 @@ learning_rate = 0.25
 samples = np.load("../datasets/cifar-100-python/train_hsv")
 targets = np.load("../datasets/cifar-100-python/train_hsv")
 
-samples = samples[0:100, 2:3, 0:32, 0:32]
-targets = targets[0:100, 0:2, 0:32, 0:32]
+samples = samples[0:1, 0:1, 2:3, 0:32, 0:32]
+targets = targets[0:1, 0:1, 0:2, 0:32, 0:32]
 
 # Create tensors from data arrays
 input_samples = torch.from_numpy(samples).float()

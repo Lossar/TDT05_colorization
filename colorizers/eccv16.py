@@ -4,7 +4,7 @@ import torch.nn as nn
 import numpy as np
 from IPython import embed
 
-from .base_color import *
+from base_color import BaseColor
 
 class ECCVGenerator(BaseColor):
     def __init__(self, norm_layer=nn.BatchNorm2d):
@@ -26,7 +26,7 @@ class ECCVGenerator(BaseColor):
         model3+=[nn.ReLU(True),]
         model3+=[nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1, bias=True),]
         model3+=[nn.ReLU(True),]
-        model3+=[nn.Conv2d(256, 256, kernel_size=3, stride=2, padding=1, bias=True),]
+        model3+=[nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1, bias=True),]
         model3+=[nn.ReLU(True),]
         model3+=[norm_layer(256),]
 
