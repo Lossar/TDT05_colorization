@@ -14,10 +14,10 @@ This training is self-supervised by the way the data is its own label. For the t
 In order to get some new results and to train a model from start, an attempt was made to define a new model and train it on the CIFAR-100 dataset. CIFAR contains many tiny images of dimension 32x32. The idea was that the smaller size would permit rapid training and evaluation as part of this project. The model did not achieve the results we were expecting, however the code can be found in this repo. Additionally, we showcase some results below from our experiments.
 
 Prediction on image that was part of the training dataset
-![Image of input, output, and original image](imgs_out/train_result.png?raw=true "Prediction on training data")
+![Image of input, output, and original image](imgs_out/our_model/train_result.png?raw=true "Prediction on training data")
 
 Prediction on an image that was not part of the dataset (unseen)
-![Image of input, output, and original image](imgs_out/test_result.png?raw=true "Prediction on test data")
+![Image of input, output, and original image](imgs_out/our_model/test_result.png?raw=true "Prediction on test data")
 
 ### Other self-supervised models
 In order to present a realistic view of what is possible for image colorization, we also present and discuss some results of other models. Note that all training methods are self-supervised, but they vary in their implementation.
@@ -30,6 +30,14 @@ Image in-coloring is a special task in that the other forms of learning, being s
 With the above being said, we can make comparisons between our model, older models, and the state of the art. Although all perform self-supervised learning, they do it slightly differently.
 
 ### DeOldify: Self-Supervision through proprietary NoGAN
-DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI], and as part of the image restoration offered by [MyHeritage].
+DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI](https://deepai.org/machine-learning-model/colorizer), and as part of the image restoration offered by [MyHeritage](https://www.myheritage.no/incolor).
 
-DeOldify is referred to by its author as being trained on "NoGAN". In traditional GAN, a generator and discriminator will be trained to either generate fake images (generator) or distinguish between real and fake images (discriminator). The discriminator is performing self-supervised learning. 
+DeOldify is referred to by its author as being trained on "NoGAN". In traditional GAN, a generator and discriminator will be trained to either generate fake images (generator) or distinguish between real and fake images (discriminator). A key component to the NoGAN approach is that the generator is first trained in a self-supervised way only on the feature loss between its generations and expected outcomes. Only afterwards is traditional GAN training done. 
+
+With regards to the GAN training itself, the discriminator is trained in such a way that it is automatically supervised. This is technically an internally built supervised problem, however it is worth noting that the supervision does not require human labelling. The labelling happens by the arcitechture itself, and while this does not qualify the learning as _self-supervised_ it still differs from traditional classes of supervised problems where humans normally create the labels.
+
+Original|Colored
+:------:|:-----:
+![Original image](imgs/brown-Guernsey-cow-bw.png)|![Generated](imgs_out/deoldify/cow-colored.png)
+
+The model does a good job of coloring in the images, with little bleeding between image components. The colored image is somewhat desaturated compared to the original. Generated image was aquired through the use of this [Google Collab](https://colab.research.google.com/github/jantic/DeOldify/blob/master/ImageColorizerColab.ipynb) found in the [DeOldify GitHub repository](https://github.com/jantic/DeOldify)
