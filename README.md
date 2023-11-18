@@ -3,12 +3,12 @@
 ## Subject
 The task deals with coloring in black and white images. The idea is to have self supervised machine learning models that can learn accurate values of color for black and white images, and predict the missing colors when provided images without color.
 
-Both a self-chosen arcitecthure and other accomplished architectures from the field have been studied. The self-defined architecture is heavily inspired by the forked repo which is related to the code of a [paper](https://arxiv.org/pdf/1603.08511.pdf) on the subject of image coloring from 2016 by Richard Zhang, Phillip Isola, and Alexei A. Efros. Code for the self-defined arcitecthure is present in this repository.
+Both a self-chosen architecture and other accomplished architectures from the field have been studied. The self-defined architecture is heavily inspired by the forked repo which is related to the code of a [paper](https://arxiv.org/pdf/1603.08511.pdf) on the subject of image coloring from 2016 by Richard Zhang, Phillip Isola, and Alexei A. Efros. Code for the self-defined architecture is present in this repository.
 
 ## Use of self-supervied learning
 For this task, self-supevised learning is performed by taking input images, splitting the images into three channels; Hue, Value, and saturation, and using the value as input while Hue and Saturation are the targets for the model. 
 
-This training is self-supervised by the way the data is its own label. For the training, there is nothing done to the data other than masking the target values by removing them from the input. There is no additional labelling performed as would be required for supervised learning, nor is the model completely without correcting factors as would be the case for unsupervised learining.
+This training is self-supervised by the way the data is its own label. For the training, there is nothing done to the data other than masking the target values by removing them from the input. There is no additional labelling performed as would be required for supervised learning, nor is the model completely without correcting factors as would be the case for unsupervised learning.
 ## Models
 ### Self-defined model
 In order to get some new results and to train a model from start, an attempt was made to define a new model and train it on the CIFAR-100 dataset. CIFAR contains many tiny images of dimension 32x32. The idea was that the smaller size would permit rapid training and evaluation as part of this project. The model did not achieve the results we were expecting, however the code can be found in this repo. Additionally, we showcase some results below from our experiments.
@@ -34,6 +34,8 @@ With the above being said, we can make comparisons between our model, older mode
 Colorful Image Colorization was regarded as one of the best black and white image colorization algorithms when it was released back in 2016. As mentioned in the subject introduction, this is what our project was heavily inspired by. Similarly to our algorithm, the training data is practically free, because any color photo can be used as a training example by separating its channels into input and superivsory signal.
 
 ![Image of Colorful Image Colorization prediction](imgs_out/ECCV_SIGGRAPH_test.png?raw=true "Colorful Image Colorization Prediction")
+
+The ECCV 16, which was released along with the research paper, creates relatively good colorized images, and according to them their methods successfully fooled humans on 32 % of the trials which beated any previous method by a significant margin, at the time of its release.
 
 ### DeOldify: Self-Supervision through proprietary NoGAN
 DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI](https://deepai.org/machine-learning-model/colorizer), and as part of the image restoration offered by [MyHeritage](https://www.myheritage.no/incolor).
