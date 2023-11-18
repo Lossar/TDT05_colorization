@@ -31,6 +31,8 @@ With the above being said, we can make comparisons between our model, older mode
 
 ### Colorful Image Colorization
 
+Colorful Image Colorization was regarded as one of the best black and white image colorization algorithms when it was released back in 2016. As mentioned in the subject introduction, this is what our project was heavily inspired by. Similarly to our algorithm, the training data is practically free, because any color photo can be used as a training example by separating its channels into input and superivsory signal.
+
 ![Image of Colorful Image Colorization prediction](imgs_out/ECCV_SIGGRAPH_test.png?raw=true "Colorful Image Colorization Prediction")
 
 ### DeOldify: Self-Supervision through proprietary NoGAN
