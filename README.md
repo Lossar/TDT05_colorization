@@ -29,6 +29,10 @@ Image in-coloring is a special task in that the other forms of learning, being s
 
 With the above being said, we can make comparisons between our model, older models, and the state of the art. Although all perform self-supervised learning, they do it slightly differently.
 
+### Colorful Image Colorization
+
+![Image of Colorful Image Colorization prediction](imgs_out/ECCV_SIGGRAPH_test.png?raw=true "Colorful Image Colorization Prediction")
+
 ### DeOldify: Self-Supervision through proprietary NoGAN
 DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI](https://deepai.org/machine-learning-model/colorizer), and as part of the image restoration offered by [MyHeritage](https://www.myheritage.no/incolor).
 
