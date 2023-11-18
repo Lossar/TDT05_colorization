@@ -28,3 +28,8 @@ Image in-coloring is a special task in that the other forms of learning, being s
 - For unsupervised learning, it is possible for a model to learn reresentations and recognize objects. It is even possible to associate colors with these representations. However, it is not possible to teach the model to _Correctly_ appy color without some data reference. If we train the model to just apply _some_ color to the objects it finds, we will be doing object detection as opposed to coloring.
 
 With the above being said, we can make comparisons between our model, older models, and the state of the art. Although all perform self-supervised learning, they do it slightly differently.
+
+### DeOldify: Self-Supervision through proprietary NoGAN
+DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI], and as part of the image restoration offered by [MyHeritage].
+
+DeOldify is referred to by its author as being trained on "NoGAN". In traditional GAN, a generator and discriminator will be trained to either generate fake images (generator) or distinguish between real and fake images (discriminator). The discriminator is performing self-supervised learning. 
