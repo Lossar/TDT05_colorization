@@ -29,7 +29,14 @@ Image in-coloring is a special task in that the other forms of learning, being s
 
 With the above being said, we can make comparisons between our model, older models, and the state of the art. Although all perform self-supervised learning, they do it slightly differently.
 
+### Colorful Image Colorization
+
+![Image of Colorful Image Colorization prediction](imgs_out/ECCV_SIGGRAPH_test.png?raw=true "Colorful Image Colorization Prediction")
+
 ### DeOldify: Self-Supervision through proprietary NoGAN
 DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI], and as part of the image restoration offered by [MyHeritage].
 
-DeOldify is referred to by its author as being trained on "NoGAN". In traditional GAN, a generator and discriminator will be trained to either generate fake images (generator) or distinguish between real and fake images (discriminator). The discriminator is performing self-supervised learning. 
+DeOldify is referred to by its author as being trained on "NoGAN". In traditional GAN, a generator and discriminator will be trained to either generate fake images (generator) or distinguish between real and fake images (discriminator). The discriminator is performing self-supervised learning.
+
+DeOldify prediction
+![Image of DeOldify prediction](imgs_out/DeOldify_test.png?raw=true "DeOldify Prediction")
