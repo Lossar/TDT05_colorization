@@ -13,6 +13,10 @@ This training is self-supervised by the way the data is its own label. For the t
 ### Self-defined model
 In order to get some new results and to train a model from start, an attempt was made to define a new model and train it on the CIFAR-100 dataset. CIFAR contains many tiny images of dimension 32x32. The idea was that the smaller size would permit rapid training and evaluation as part of this project. The model did not achieve the results we were expecting, however the code can be found in this repo. Additionally, we showcase some results below from our experiments.
 
+![Image of input, output, and original image](imags_out/train_result?raw=true "Prediction on training data")
+
+![Image of input, output, and original image](relative%20path/to/img.jpg?raw=true "Prediction on test data")
+
 ### Other self-supervised models
 In order to present a realistic view of what is possible for image colorization, we also present some results of other models, and a brief overview of their arcitechtures and ways of training. Note that all training methods are self-supervised, but they vary in the implementation.
 
