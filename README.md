@@ -3,6 +3,8 @@
 ## Subject
 The task deals with coloring in black and white images. The idea is to have self supervices machine learning models that can learn accurate values of color for black and white images and apply these to provided black and white images. The models should in essence predict the missing colors.
 
+Both a self-chosen arcitecthure and other accomplished arcitecthures from the field have been studied. The self-defined arcitecthure is heavily inspired by the forked repo which is related the code of a [paper](https://arxiv.org/pdf/1603.08511.pdf) on the subject of image coloring from 2016 by Richard Zhang, Phillip Isola, and Alexei A. Efros. Code for the self-defined arcitecthure is present in this repository.
+
 ## Use of self-supervied learning
 For this task, self-supevised learning is performed by taking input images, splitting the images into three channels; Hue, Value, and saturation, and using the value as input while Hue and Saturation are the targets for the model. 
 
@@ -12,7 +14,7 @@ This training is self-supervised by the way the data is its own label. For the t
 In order to get some new results and to train a model from start, an attempt was made to define a new model and train it on the CIFAR-100 dataset. CIFAR contains many tiny images of dimension 32x32. The idea was that the smaller size would permit rapid training and evaluation as part of this project. The model did not achieve the results we were expecting, however the code can be found in this repo. Additionally, we showcase some results below from our experiments.
 
 ### Other self-supervised models
-In order to present a realistic view of what is possible for image colorization, we also 
+In order to present a realistic view of what is possible for image colorization, we also present some results of other models, and a brief overview of their arcitechtures and ways of training. Note that all training methods are self-supervised, but they vary in the implementation.
 
 ## Comparison with other models and ways of learning
 Image in-coloring is a special task in that the other forms of learning, being supervised and unsupervised, are not really pplicable to the domain. This is because:
