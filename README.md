@@ -1,9 +1,9 @@
 <!--<h3><b>Colorful Image Colorization</b></h3>-->
 # TDT05 Mini Project: Image Colorization
 ## Subject
-The task deals with coloring in black and white images. The idea is to have self supervices machine learning models that can learn accurate values of color for black and white images and apply these to provided black and white images. The models should in essence predict the missing colors.
+The task deals with coloring in black and white images. The idea is to have self supervised machine learning models that can learn accurate values of color for black and white images, and predict the missing colors when provided images without color.
 
-Both a self-chosen arcitecthure and other accomplished arcitecthures from the field have been studied. The self-defined arcitecthure is heavily inspired by the forked repo which is related the code of a [paper](https://arxiv.org/pdf/1603.08511.pdf) on the subject of image coloring from 2016 by Richard Zhang, Phillip Isola, and Alexei A. Efros. Code for the self-defined arcitecthure is present in this repository.
+Both a self-chosen arcitecthure and other accomplished architectures from the field have been studied. The self-defined architecture is heavily inspired by the forked repo which is related to the code of a [paper](https://arxiv.org/pdf/1603.08511.pdf) on the subject of image coloring from 2016 by Richard Zhang, Phillip Isola, and Alexei A. Efros. Code for the self-defined arcitecthure is present in this repository.
 
 ## Use of self-supervied learning
 For this task, self-supevised learning is performed by taking input images, splitting the images into three channels; Hue, Value, and saturation, and using the value as input while Hue and Saturation are the targets for the model. 
@@ -13,15 +13,17 @@ This training is self-supervised by the way the data is its own label. For the t
 ### Self-defined model
 In order to get some new results and to train a model from start, an attempt was made to define a new model and train it on the CIFAR-100 dataset. CIFAR contains many tiny images of dimension 32x32. The idea was that the smaller size would permit rapid training and evaluation as part of this project. The model did not achieve the results we were expecting, however the code can be found in this repo. Additionally, we showcase some results below from our experiments.
 
+Prediction on image that was part of the training dataset
 ![Image of input, output, and original image](imgs_out/train_result.png?raw=true "Prediction on training data")
 
+Prediction on an image that was not part of the dataset (unseen)
 ![Image of input, output, and original image](imgs_out/test_result.png?raw=true "Prediction on test data")
 
 ### Other self-supervised models
-In order to present a realistic view of what is possible for image colorization, we also present some results of other models, and a brief overview of their arcitechtures and ways of training. Note that all training methods are self-supervised, but they vary in the implementation.
+In order to present a realistic view of what is possible for image colorization, we also present and discuss some results of other models. Note that all training methods are self-supervised, but they vary in their implementation.
 
 ## Comparison with other models and ways of learning
-Image in-coloring is a special task in that the other forms of learning, being supervised and unsupervised, are not really pplicable to the domain. This is because:
+Image in-coloring is a special task in that the other forms of learning, being supervised and unsupervised, are not applicable. This is because:
 - Supervised learning requires labelling of data. The data from the image itself already contains the required labels, that being the values of the colors of the image. Labelling this manually would simply be double work
 - For unsupervised learning, it is possible for a model to learn reresentations and recognize objects. It is even possible to associate colors with these representations. However, it is not possible to teach the model to _Correctly_ appy color without some data reference. If we train the model to just apply _some_ color to the objects it finds, we will be doing object detection as opposed to coloring.
 
