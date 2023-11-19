@@ -6,7 +6,7 @@ from IPython import embed
 
 from base_color import *
 
-class ColorizerModel(BaseColor):
+class ColorizerModel(nn.Module):
     def __init__(self):
         super(ColorizerModel, self).__init__()
 
