@@ -39,7 +39,7 @@ targets = targets[0:100, 0:2, 0:32, 0:32]
 ```
 python train.py
 ```
-- By default, the script will test the model after training by taking the first image from the loaded data, stripping the colors, and asking the model to predict the missing colors. To use a different image from the loaded data, change the `image_number` variable on line 62.
+- By default, the script will test the model after training by taking the first image from the loaded data, stripping the colors, and asking the model to predict the missing colors. To use a different image from the loaded data, change the `image_number` variable on line 64.
 - Note also that by default, the script uses images from the `train_hsv` file. To use the test set, change the dataset_path variable string to
 ```
 ../datasets/cifar-100-python/test_hsv
