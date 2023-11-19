@@ -10,7 +10,7 @@ For this task, self-supevised learning is performed by taking input images, spli
 
 ![Diagram of the training process](imgs/process.drawio.png)
 
-This training is self-supervised by the way the data is its own label. For the training, there is nothing done to the data other than masking the target values by removing them from the input. There is no additional labelling performed as would be required for supervised learning, nor is the model completely without correcting factors as would be the case for unsupervised learning.
+This training is self-supervised by the way the data is its own label. For the training, there is nothing done to the data other than masking the target (hue and saturation) values by removing them from the input. There is no additional labelling performed as would be required for supervised learning, nor is the model completely without correcting factors as would be the case for unsupervised learning.
 ## Models
 ### Self-defined model
 In order to get some new results and to train a model from start, an attempt was made to define a new model and train it on the CIFAR-100 dataset. CIFAR contains many tiny images of dimension 32x32. The idea was that the smaller size would permit rapid training and evaluation as part of this project. The model did not achieve the results we were expecting, however the code can be found in this repo. Additionally, we showcase some results below from our experiments.
@@ -38,6 +38,8 @@ Colorful Image Colorization was regarded as one of the best black and white imag
 ![Image of Colorful Image Colorization prediction](imgs_out/ECCV_SIGGRAPH_test.png?raw=true "Colorful Image Colorization Prediction")
 
 The ECCV 16, which was released along with the research paper, creates relatively good colorized images, and according to them their methods successfully fooled humans on 32 % of the trials which beated any previous method by a significant margin, at the time of its release.
+
+This model is the one this repo is forked from. This was done as experiments were started using the original code, and to properly reference back to the main source of inspiration for our own implementation.
 
 ### DeOldify: Self-Supervision through proprietary NoGAN
 DeOldify is one of the biggest in-coloring models in terms of use. The model is vailable for use online through [DeepAI](https://deepai.org/machine-learning-model/colorizer), and as part of the image restoration offered by [MyHeritage](https://www.myheritage.no/incolor).
