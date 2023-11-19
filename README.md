@@ -6,7 +6,9 @@ The task deals with coloring in black and white images. The idea is to have self
 Both a self-chosen arcitecthure and other accomplished architectures from the field have been studied. The self-defined architecture is heavily inspired by the forked repo which is related to the code of a [paper](https://arxiv.org/pdf/1603.08511.pdf) on the subject of image coloring from 2016 by Richard Zhang, Phillip Isola, and Alexei A. Efros. Code for the self-defined arcitecthure is present in this repository.
 
 ## Use of self-supervied learning
-For this task, self-supevised learning is performed by taking input images, splitting the images into three channels; Hue, Value, and saturation, and using the value as input while Hue and Saturation are the targets for the model. 
+For this task, self-supevised learning is performed by taking input images, splitting the images into three channels; Hue, Value, and saturation, and using the Value as input while Hue and Saturation are the targets for the model. This provides the model with a black and white version of the image through only receiving the value, and the original colors of the image as its targets. A diagram of the training is provided below.
+
+![Diagram of the training process](imgs/process.drawio.png)
 
 This training is self-supervised by the way the data is its own label. For the training, there is nothing done to the data other than masking the target values by removing them from the input. There is no additional labelling performed as would be required for supervised learning, nor is the model completely without correcting factors as would be the case for unsupervised learining.
 ## Models
