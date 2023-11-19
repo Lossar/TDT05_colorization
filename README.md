@@ -21,6 +21,32 @@ Prediction on image that was part of the training dataset
 Prediction on an image that was not part of the dataset (unseen)
 ![Image of input, output, and original image](imgs_out/our_model/test_result.png?raw=true "Prediction on test data")
 
+#### Running the self-defined model
+To train and run the model it must be trained with prepared data. We have prepared datasets of images from CIFAR-100 with HSV colors and made them available for [download here](https://folk.ntnu.no/larsira/tdt05/).
+To train and run from scratch:
+- Download the `train_hsv` and `test_hsv` files and put them in the `datasets\cifar-100-python` folder
+- Navigate to the `colorizers folder`
+```
+cd colorizers
+```
+- Go to train.py and set the hyper-parameters to your liking
+- Select how many images you want to train on (up to 50000, which is the entire dataset). This is done by modifying the first slicer of the `samples` and `targets` variables. the below examples will give 100 samples and targets (0:100 as the first slicer). The amount of samples and targets *MUST BE EQUAL*, as they represent the same images but samples only contain the value channel while targets contain saturation and hue.
+```
+samples = samples[0:100, 2:3, 0:32, 0:32]
+targets = targets[0:100, 0:2, 0:32, 0:32]
+```
+- When ready, run `train.py`. Losses will be printed to console
+```
+python train.py
+```
+- By default, the script will test the model after training by taking the first image from the loaded data, stripping the colors, and asking the model to predict the missing colors. To use a different image from the loaded data, change the `image_number` variable on line 62.
+- Note also that by default, the script uses images from the `train_hsv` file. To use the test set, change line 60 to
+```
+data = np.load("../datasets/cifar-100-python/test_hsv")
+```
+
+The data have been converted from rgb to hsv using the `rgb_to_hsv.py` script present in the `colorizers` folder.
+
 ### Other self-supervised models
 In order to present a realistic view of what is possible for image colorization, we also present and discuss some results of other models. Note that all training methods are self-supervised, but they vary in their implementation.
 
