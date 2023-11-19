@@ -26,8 +26,10 @@ batch_size = 8
 
 # Load samples and targets (I redefined the cifar-100 dataset - removed everything but the images themselves)
 
-samples = np.load("../datasets/cifar-100-python/train_hsv")
-targets = np.load("../datasets/cifar-100-python/train_hsv")
+dataset_path = "../datasets/cifar-100-python/train_hsv"
+
+samples = np.load(dataset_path)
+targets = np.load(dataset_path)
 
 samples = samples[0:1, 2:3, 0:32, 0:32]
 targets = targets[0:1, 0:2, 0:32, 0:32]
@@ -57,7 +59,7 @@ trainer.train(epochs=epochs)
 torch.save(model.state_dict(), "trained_model.pt")
 
 # Check if prediction is working
-data = np.load("../datasets/cifar-100-python/train_hsv")
+data = np.load(dataset_path)
 
 image_number = 0
 
