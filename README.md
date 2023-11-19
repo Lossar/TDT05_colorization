@@ -39,7 +39,7 @@ targets = targets[0:100, 0:2, 0:32, 0:32]
 ```
 python train.py
 ```
-- By default, the script will test the model after training by taking the first image from the loaded data, stripping the colors, and asking the model to predict the missing colors. To use a different image from the loaded data, change the `image_number` variable on line 64.
+- By default, the script will test the model after training by taking the first image from the loaded data, stripping the colors, and asking the model to predict the missing colors. To use a different image from the loaded data, change the `image_number` variable on line 62.
 - Note also that by default, the script uses images from the `train_hsv` file. To use the test set, change line 60 to
 ```
 data = np.load("../datasets/cifar-100-python/train_hsv")
@@ -78,7 +78,7 @@ Original|Colored
 :------:|:-----:
 ![Original image](imgs/brown-Guernsey-cow-bw.png)|![Generated](imgs_out/deoldify/cow-colored.png)
 
-The model does a good job of coloring in the images, with little bleeding between image components. The colored image is somewhat desaturated compared to the original. The generated image was aquired through the use of this [Google Collab](https://colab.research.google.com/github/jantic/DeOldify/blob/master/ImageColorizerColab.ipynb) found in the [DeOldify GitHub repository](https://github.com/jantic/DeOldify)
+The model does a good job of coloring in the images, with little bleeding between image components. The colored image is somewhat desaturated compared to the original. The generated image was acquired through the use of this [Google Collab](https://colab.research.google.com/github/jantic/DeOldify/blob/master/ImageColorizerColab.ipynb) found in the [DeOldify GitHub repository](https://github.com/jantic/DeOldify)
 
 ## Conclusion
 Being a problem that lends itself well to self-superivision, coloring of images does not have any competetive implementations that are not self-supervised. The current self-supervised methods are however quite impressive especially when paired with ideas from not fully self-supervised methods like GANs. However, even in those scenarios, we can see from the DeOldify example that the self-supervised portion is still key to achieve great results.
