@@ -53,3 +53,8 @@ Original|Colored
 ![Original image](imgs/brown-Guernsey-cow-bw.png)|![Generated](imgs_out/deoldify/cow-colored.png)
 
 The model does a good job of coloring in the images, with little bleeding between image components. The colored image is somewhat desaturated compared to the original. Generated image was aquired through the use of this [Google Collab](https://colab.research.google.com/github/jantic/DeOldify/blob/master/ImageColorizerColab.ipynb) found in the [DeOldify GitHub repository](https://github.com/jantic/DeOldify)
+
+## Conclusion
+Being a problem that lends itself well to self-superivision, coloring of images does not have any competetive implementations that are not self-supervised. The current self-supervised methods are however quite impressive especially when paired with ideas from not fully self-supervised methods like GANs. However, even in those scenarios, we can see from the DeOldify example that the self-supervised portion is still key to achieve great results.
+
+Although we as a group did not manage to implement something very impressive, we still managed to apply self-supervised learning to the in-coloring problem. The results could be further improved by tuning the arcitecthure with different layers.
